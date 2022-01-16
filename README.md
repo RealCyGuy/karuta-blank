@@ -6,7 +6,7 @@ Efficiently blank karuta sketches.
 
 ## Installation
 
-- Install [python 3](https://www.python.org/downloads/)\
+- Install [python 3](https://www.python.org/downloads/)
 - Download this git repo
 - Install requirements with `pip install -r requirements.txt`
 
