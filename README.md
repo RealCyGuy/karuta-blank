@@ -18,4 +18,5 @@ Efficiently blank karuta sketches.
   - `URL`: Karuta sketch url. Example: `https://karuta.xyz/api/studio/j93bxdnpoy7hwd7z9575vnnog355r75l`
   - `AUTHORIZATION`: Sketch auth key. You can get by pressing `f12` and going to application tab > local storage > authorization.
 - Run `blank.py`.
+- Copy to sketch website console and run it.
 - Refresh sketch page.

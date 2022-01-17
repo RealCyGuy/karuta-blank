@@ -2,7 +2,6 @@ import base64
 import os
 
 from dotenv import load_dotenv
-import requests
 
 load_dotenv()
 
@@ -23,7 +22,7 @@ paths = []
 while y > preset[1]:
     # print(f'<path d="M 37,{y} c 20,0 40,0 196,0" stroke="#fff" stroke-width="7"></path>')
     path = f'<path d="M{preset[2]},{y}c61.06667,0 122.13333,0 {preset[3]},0"></path>'
-    print(path)
+    # print(path)
     paths.append(path)
     y -= 6
 g = (
@@ -32,13 +31,18 @@ g = (
     + "</g>"
 )
 body = '{"data": "' + base64.b64encode(g.encode("ascii")).decode("ascii") + '"}'
-print(body)
+# print(body)
+js = f"""const options = {{
+  method: 'POST',
+  headers: {{
+    Authorization: '{os.environ.get("AUTHORIZATION")}',
+    'content-type': 'application/json'
+  }},
+  body: '{body}'
+}};
 
-headers = {
-  "Authorization": os.environ.get("AUTHORIZATION"),
-  "content-type": "application/json"
-}
-
-response = requests.request("POST", os.environ.get("URL"), data=body, headers=headers)
-
-print(response.text)
+fetch('{os.environ.get("url")}', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));"""
+print(js)
